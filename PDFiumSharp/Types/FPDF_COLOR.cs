@@ -5,12 +5,12 @@ Copyright (C) 2017 Tobias Meyer
 License: Microsoft Reciprocal License (MS-RL)
 */
 #endregion
-using System;
+
 using System.Runtime.InteropServices;
 
 namespace PDFiumSharp.Types
 {
-	[StructLayout(LayoutKind.Explicit)]
+    [StructLayout(LayoutKind.Explicit)]
 	public struct FPDF_COLOR
 	{
 		[FieldOffset(0)]

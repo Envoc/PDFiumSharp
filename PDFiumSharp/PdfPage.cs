@@ -89,6 +89,11 @@ namespace PDFiumSharp
 			PDFium.FPDF_RenderPageBitmap(renderTarget.Handle, this.Handle, rectDest.left, rectDest.top, rectDest.width, rectDest.height, orientation, flags);
 		}
 
+        public void RenderForm(PDFiumFormHandle formHandle, PDFiumBitmap renderTarget, PageOrientations orientation = PageOrientations.Normal, RenderingFlags flags = RenderingFlags.None)
+		{
+			PDFium.FPDF_FFLDraw(formHandle.Handle, renderTarget.Handle, Handle, 0, 0, renderTarget.Width, renderTarget.Height, orientation, flags);
+		}
+
 		/// <summary>
 		/// Renders the page to a <see cref="PDFiumBitmap"/>
 		/// </summary>

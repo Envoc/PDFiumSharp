@@ -91,6 +91,16 @@ var Imports = new[] {
 		  Documentation = new string[] { "<seealso cref='PdfPage.Size'/>" },
 		  Attributes = new string[] { } },
 
+	new { Method = "FPDF_FORMHANDLE FPDFDOC_InitFormFillEnvironment(FPDF_DOCUMENT document, FPDF_FORMFILLINFO formInfo)",
+		  AccessModifier = "public",
+		  Documentation = new string[] { "<seealso cref='PdfDocument.InitFormFillEnvironment'/>" },
+		  Attributes = new string[] { } },
+
+	new { Method = "void FPDF_FFLDraw(FPDF_FORMHANDLE hHandle, FPDF_BITMAP bitmap, FPDF_PAGE page, int start_x, int start_y, int size_x, int size_y, PageOrientations rotate, RenderingFlags flags)",
+		  AccessModifier = "public",
+		  Documentation = new string[] { "<seealso cref='PdfPage.RenderForm'/>" },
+		  Attributes = new string[] { } },
+
 	new { Method = "void FPDF_RenderPageBitmap(FPDF_BITMAP bitmap, FPDF_PAGE page, int start_x, int start_y, int size_x, int size_y, PageOrientations rotation, RenderingFlags flags)",
 		  AccessModifier = "public",
 		  Documentation = new string[] { "<seealso cref='PdfPage.Render'/>" },

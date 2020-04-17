@@ -12,6 +12,7 @@ License: Microsoft Reciprocal License (MS-RL)
 <# // ------------------------------------------------------ Code Start ------------------------------------------------------
 string[] Names = {
 	"FPDF_ACTION",
+	"FPDF_FORMHANDLE",
 	"FPDF_BITMAP",
 	"FPDF_BOOKMARK",
 	"FPDF_CLIPPATH",

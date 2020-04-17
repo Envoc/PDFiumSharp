@@ -11,12 +11,15 @@ using System.Text;
 using PDFiumSharp.Types;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace PDFiumSharp
 {
-    public sealed class PdfDocument : NativeWrapper<FPDF_DOCUMENT>
+	public sealed class PdfDocument : NativeWrapper<FPDF_DOCUMENT>
     {
-		/// <summary>
+        private GCHandle formFillInfoHandle;
+
+        /// <summary>
 		/// Gets the pages in the current <see cref="PdfDocument"/>.
 		/// </summary>
 		public PdfPageCollection Pages { get; }
@@ -119,6 +122,26 @@ namespace PDFiumSharp
 			return PDFium.FPDF_SaveAsCopy(Handle, stream, flags, version);
 		}
 
+        public PDFiumFormHandle InitFormFillEnvironment()
+		{
+			var formFillInfo = new FPDF_FORMFILLINFO();
+            formFillInfoHandle = GCHandle.Alloc(formFillInfo, GCHandleType.Pinned);
+
+            FPDF_FORMHANDLE result = new FPDF_FORMHANDLE();
+            for (int i = 1; i <= 2; i++)
+            {
+                formFillInfo.version = 3-i;
+
+                result = PDFium.FPDFDOC_InitFormFillEnvironment(Handle, formFillInfo);
+                if (!result.IsNull)
+                {
+                    break;
+                }
+            }
+
+            return new PDFiumFormHandle(result);
+        }
+
 		/// <summary>
 		/// Saves the <see cref="PdfDocument"/> to the file system.
 		/// </summary>
@@ -144,6 +167,10 @@ namespace PDFiumSharp
 
 		protected override void Dispose(FPDF_DOCUMENT handle)
 		{
+            if (formFillInfoHandle.IsAllocated)
+            {
+                formFillInfoHandle.Free();
+            }
 			((IDisposable)Pages).Dispose();
 			PDFium.FPDF_CloseDocument(handle);
 		}

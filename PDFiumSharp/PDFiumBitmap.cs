@@ -14,10 +14,10 @@ using System.Runtime.InteropServices;
 
 namespace PDFiumSharp
 {
-	/// <summary>
-	/// A bitmap to which a <see cref="PdfPage"/> can be rendered.
-	/// </summary>
-    public sealed class PDFiumBitmap : NativeWrapper<FPDF_BITMAP>
+    /// <summary>
+		/// A bitmap to which a <see cref="PdfPage"/> can be rendered.
+		/// </summary>
+		public sealed class PDFiumBitmap : NativeWrapper<FPDF_BITMAP>
     {
 		public int Width => PDFium.FPDFBitmap_GetWidth(Handle);
 		public int Height => PDFium.FPDFBitmap_GetHeight(Handle);
