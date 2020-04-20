@@ -12,7 +12,7 @@ License: Microsoft Reciprocal License (MS-RL)
 <# // ------------------------------------------------------ Code Start ------------------------------------------------------
 const string DllName32 = "pdfium_x86";
 const string DllName64 = "pdfium_x64";
-const string CallingConvention = "CallingConvention.StdCall";
+const string CallingConvention = "CallingConvention.Cdecl";
 
 var Imports = new[] {
 	// https://pdfium.googlesource.com/pdfium/+/master/public/fpdfview.h

@@ -17,8 +17,6 @@ namespace PDFiumSharp
 {
 	public sealed class PdfDocument : NativeWrapper<FPDF_DOCUMENT>
     {
-        private GCHandle formFillInfoHandle;
-
         /// <summary>
 		/// Gets the pages in the current <see cref="PdfDocument"/>.
 		/// </summary>
@@ -125,21 +123,13 @@ namespace PDFiumSharp
         public PDFiumFormHandle InitFormFillEnvironment()
 		{
 			var formFillInfo = new FPDF_FORMFILLINFO();
-            formFillInfoHandle = GCHandle.Alloc(formFillInfo, GCHandleType.Pinned);
 
-            FPDF_FORMHANDLE result = new FPDF_FORMHANDLE();
-            for (int i = 1; i <= 2; i++)
-            {
-                formFillInfo.version = 3-i;
+            FPDF_FORMHANDLE result;
+            formFillInfo.version = 2;
 
-                result = PDFium.FPDFDOC_InitFormFillEnvironment(Handle, formFillInfo);
-                if (!result.IsNull)
-                {
-                    break;
-                }
-            }
+            result = PDFium.FPDFDOC_InitFormFillEnvironment(Handle, formFillInfo);
 
-            return new PDFiumFormHandle(result);
+			return new PDFiumFormHandle(result);
         }
 
 		/// <summary>
@@ -167,10 +157,6 @@ namespace PDFiumSharp
 
 		protected override void Dispose(FPDF_DOCUMENT handle)
 		{
-            if (formFillInfoHandle.IsAllocated)
-            {
-                formFillInfoHandle.Free();
-            }
 			((IDisposable)Pages).Dispose();
 			PDFium.FPDF_CloseDocument(handle);
 		}
