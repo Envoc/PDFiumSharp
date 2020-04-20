@@ -5,12 +5,13 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <Copyright>Copyright © Tobias Meyer 2017</Copyright>
-    <Version>1.1.0</Version>
+    <Version>1.1.7</Version>
     <PackageId>Envoc.PDFiumSharp</PackageId>
     <Company>Envoc</Company>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/Envoc/PDFiumSharp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Envoc/PDFiumSharp</RepositoryUrl>
+    <AssemblyName>Envoc.PDFiumSharp</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -46,7 +47,7 @@
     <None Update="pdfium_x86.dll" Pack="true" PackagePath="build\">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="unmanaged.targets" Pack="true" PackagePath="build\">
+    <None Include="Envoc.PDFiumSharp.targets" Pack="true" PackagePath="build\">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Types\FPDF_Typedefs.tt">
