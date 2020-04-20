@@ -2,9 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <AssemblyVersion>0.1.1.0</AssemblyVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <Copyright>Copyright © Tobias Meyer 2017</Copyright>
+    <Version>1.1.0</Version>
+    <PackageId>Envoc.PDFiumSharp</PackageId>
+    <Company>Envoc</Company>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/Envoc/PDFiumSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Envoc/PDFiumSharp</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,17 +22,11 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
-
   <ItemGroup>
-    <Content Include="pdfium_x64.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="pdfium_x86.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
     <None Include="PDFium.g.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -40,6 +40,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="pdfium_x64.dll" Pack="true" PackagePath="build\">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="pdfium_x86.dll" Pack="true" PackagePath="build\">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="unmanaged.targets" Pack="true" PackagePath="build\">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Types\FPDF_Typedefs.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FPDF_Typedefs.g.cs</LastGenOutput>

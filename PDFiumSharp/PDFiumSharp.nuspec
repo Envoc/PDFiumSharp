@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <version>1.1.0</version>
+    <authors>PDFiumSharp</authors>
+    <owners>Envoc</owners>
+    <id>Envoc.PDFiumSharp</id>
+    <title>Envoc.PDFiumSharp</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Envoc.PDFiumSharp</description>
+    <copyright>Copyright © Tobias Meyer 2017</copyright>
+    <dependencies>
+      <group targetFramework=".NETStandard1.4">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.ValueTuple" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
